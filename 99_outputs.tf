@@ -18,12 +18,21 @@ output "internet_gateway_id" {
   value       = "${aws_internet_gateway.internet_gateway.*.id}"
 }
 
-output "public route table" {
+output "private_route_table" {
+  description = "ID of private route table"
+  value       = "${aws_route_table.private_route_table.*.id}"
+}
+
+output "public_route_table" {
   description = "ID of public route table"
   value       = "${aws_route_table.public_route_table.*.id}"
 }
 
-output "internet_gateway_id" {
-  description = "ID of internet gateway"
-  value       = "${aws_internet_gateway.internet_gateway.*.id}"
+output "ssh_command" {
+  value = "ssh -i 'tst-apachesuperset.pem' ec2-user@${local.instance_ip}"
 }
+
+output "ec2_sec_gr" {
+  value = "aws_security_group.web_ssh_ping.id"
+}
+
