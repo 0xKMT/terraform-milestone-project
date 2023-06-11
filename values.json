@@ -1,0 +1,63 @@
+{
+    "region": "ap-southeast-1",
+    "network_vpc" : "200.200.0.0/16",
+    "vpc_name" : "pktmri-tf-apache-superset",
+    "network_ip": "200.200",
+    "public_subnet_name" : "pkmtri-tf-public-subnet",
+    "public_subnet_cidr" : "200.200.10.0/24",
+    "public_rtb_name" : "pktmri-tf-public-route-table",
+    "private_subnet_name" : "pkmtri-tf-private-subnet",
+    "private_rtb_name" : "pkmtri-tf-private_route_table",
+
+    "tags":{
+        "Owner": "PKMT",
+        "Project": "terraform-apache-superset"
+    },
+    "sg_name_ec2": "ec2-sg-apache-superset",
+    "ingress_protocol_ec2" : "tcp",
+    "ingress_cidr_ec2" : "0.0.0.0/0",
+    "ingress_ports_ec2": [
+        {
+            "port": 22,
+            "description": "SSH"
+        },
+        {
+            "port": 80,
+            "description": "HTTP"
+        },
+        {
+            "port": 443,
+            "description": "HTTPS"
+        },
+        {
+            "port": 3306,
+            "description": "MySQL"
+        }
+    ],
+    "egress_cidr_ec2" : "0.0.0.0/0",
+    "egress_protocol_ec2" : "-1",
+    "egress_ports_ec2": [
+        {
+            "port": 0,
+            "description": "all allow"
+        }
+    ],
+
+    "sg_name_rds": "rds-sg-apache-superset",
+    "ingress_cidr_rds" : "200.200.10.0/24",
+    "ingress_protocol_rds" : "tcp",
+    "ingress_ports_rds": [
+        {
+            "port": 3306,
+            "description": "MySQL"
+        }
+    ],
+    "egress_cidr_rds" : "0.0.0.0/0",
+    "egress_protocol_rds" : "-1",
+    "egress_ports_rds": [
+        {
+            "port": 0,
+            "description": "all allow"
+        }
+    ]
+}
