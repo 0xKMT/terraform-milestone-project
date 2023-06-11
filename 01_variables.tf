@@ -59,14 +59,6 @@ variable "sg_description"{
   default     = " "
 }
 
-# variable "vpc_id"{
-#   description = "security group name"
-#   type        = string
-#   default     = ""
-# }
-
-##############################################################################
-
 variable "sg_name_ec2"{
   description = "security group name"
   type        = string
