@@ -2,23 +2,21 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
-resource "aws_rds_cluster" "create_cluster"{
-  database_name           = "${var.database_name}"
-  master_username         = "${var.master_username}"
-  master_password         = "${var.master_password}"
-  backup_retention_period = "${var.backup_retention_period}"
-  preferred_backup_window = "${var.preferred_backup_window}"
-  engine = "${var.engine}"
-  engine_mode = "${var.engine_mode}"
-  engine_version = "${var.engine_version}"
-  skip_final_snapshot= "${var.skip_final_snapshot}"
-  db_subnet_group_name="${var.db_subnet_group_name}"
-  vpc_security_group_ids=["${var.vpc_security_group_ids}"]
-  db_cluster_parameter_group_name="${var.db_cluster_parameter_group_name}"
-  timeouts {
-    create = "${var.to_create}"
-    update = "${var.to_update}"
-    delete = "${var.to_delete}"
-  }
-  enable_http_endpoint = "${var.enable_http_endpoint}"
+resource "aws_db_instance" "main" {
+  allocated_storage    = var.allocated_storage//20
+  db_name              = var.database_name//"mydb"
+  engine               = var.engine//"mysql"
+  engine_version       = var.engine_version//"5.7"
+  instance_class       = var.instance_class//"db.t3.micro"
+  username             = var.username//"foo"
+  password             = var.password//"foobarbaz"
+  parameter_group_name = var.parameter_group_name//"default.mysql5.7"
+  skip_final_snapshot  = var.skip_final_snapshot//true
+  publicly_accessible  = false
+  vpc_security_group_ids = [var.vpc_security_group_ids] //Associate with security group
+  availability_zone    =  var.availability_zone 
+  tags   = merge(
+    { "Name" = var.rds_name },
+    var.tags,
+  )
 }
