@@ -1,18 +1,14 @@
 {
     "region": "ap-southeast-1",
     "network_vpc" : "200.200.0.0/16",
-    "vpc_name" : "pktmri-tf-apache-superset",
+    "vpc_name" : "pktmri-tf-vpc-apache-superset",
     "network_ip": "200.200",
     "public_subnet_name" : "pkmtri-tf-public-subnet",
     "public_subnet_cidr" : "200.200.10.0/24",
     "public_rtb_name" : "pktmri-tf-public-route-table",
     "private_subnet_name" : "pkmtri-tf-private-subnet",
-    "private_rtb_name" : "pkmtri-tf-private_route_table",
+    "private_rtb_name" : "pkmtri-tf-private-route-table",
 
-    "tags":{
-        "Owner": "PKMT",
-        "Project": "terraform-apache-superset"
-    },
     "sg_name_ec2": "ec2-sg-apache-superset",
     "ingress_protocol_ec2" : "tcp",
     "ingress_cidr_ec2" : "0.0.0.0/0",
@@ -59,5 +55,15 @@
             "port": 0,
             "description": "all allow"
         }
-    ]
+    ],
+
+    "ec2_name" : "pkmtri-tf-ec2-apache-superset",
+    "ami" : "ami-0df7a207adb9748c7",
+    "instance_type" : "t2.micro",
+    "keyname" : "tf-ec2-apache-superset",
+
+    "tags":{
+        "Owner": "PKMT",
+        "Project": "terraform-apache-superset"
+    }
 }

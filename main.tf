@@ -41,22 +41,14 @@ module "security_group_rds" {
   tags    = var.tags
 }
 
-# resource "aws_instance" "ec2_connect_rds" {
-#   ami           = "ami-0df7a207adb9748c7"
-#   instance_type = "t2.micro"
-#   key_name      = "tst-apachesuperset"
+module "create_EC2_apache_superset" {
+  source = "./modules/ec2"
+  ec2_name = var.ec2_name
+  keyname  = var.keyname
+  ami      = var.ami 
+  instance_type = var.instance_type
+  subnet_public_id  = module.vpc_apache_superset.public_subnet_id
+  vpc_security_group_ids = module.security_group_ec2.security_group_id
+  tags    = var.tags
+}
 
-#   //Associate with public subnet
-#   subnet_id                   = aws_subnet.public-subnet[0].id
-#   associate_public_ip_address = true
-#   //security_groups = ["web_ssh_ping"]
-#   vpc_security_group_ids = [aws_security_group.web_ssh_ping.id]
-#   tags = {
-#     "Name": "pkmtri-tf-ec2_rds"
-#     "Owner": "PKMTri"
-#     "Project": "terraform-apache-superset"
-#   }
-# }
-# locals {
-#   instance_ip = aws_instance.ec2_connect_rds.public_ip
-# }
