@@ -16,9 +16,9 @@ module "vpc_apache_superset" {
 }
 
 module "security_group_ec2" {
-  source = "./modules/security-group"
+  source  = "./modules/security-group"
   sg_name = var.sg_name_ec2
-  vpc_id = module.vpc_apache_superset.vpc_id
+  vpc_id  = module.vpc_apache_superset.vpc_id
   ingress_ports = var.ingress_ports_ec2
   ingress_cidr  = var.ingress_cidr_ec2
   ingress_protocol = var.ingress_protocol_ec2
@@ -29,9 +29,9 @@ module "security_group_ec2" {
 }
 
 module "security_group_rds" {
-  source = "./modules/security-group"
+  source  = "./modules/security-group"
   sg_name = var.sg_name_rds
-  vpc_id = module.vpc_apache_superset.vpc_id
+  vpc_id  = module.vpc_apache_superset.vpc_id
   ingress_ports = var.ingress_ports_rds
   ingress_cidr  = var.ingress_cidr_rds
   ingress_protocol = var.ingress_protocol_rds
@@ -50,5 +50,23 @@ module "create_EC2_apache_superset" {
   subnet_public_id  = module.vpc_apache_superset.public_subnet_id
   vpc_security_group_ids = module.security_group_ec2.security_group_id
   tags    = var.tags
+}
+
+module "RDS_apache_superset" {
+  source = "./modules/rds"
+  db_subnet_group_name = var.db_subnet_group_name
+  private_subnet_ids   = module.vpc_apache_superset.private_subnet_id
+  allocated_storage    = var.allocated_storage
+  database_name        = var.database_name
+  engine = var.engine
+  engine_version = var.engine_version
+  instance_class = var.instance_class
+  rds_username   = var.rds_username
+  rds_password   = var.rds_password
+  rds_name       = var.rds_name
+  skip_final_snapshot    = var.skip_final_snapshot 
+  vpc_security_group_ids = module.security_group_rds.security_group_id
+  availability_zone      = var.availability_zone
+  tags = var.tags
 }
 

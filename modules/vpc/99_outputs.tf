@@ -5,7 +5,7 @@ output "vpc_id" {
 
 output "private_subnet_id" {
   description = "ID of Private Subnet"
-  value       = aws_subnet.private.*.id
+  value       = ["${aws_subnet.private.0.id}","${aws_subnet.private.1.id}"]
 }
 
 output "public_subnet_id" {

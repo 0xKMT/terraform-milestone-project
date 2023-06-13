@@ -62,6 +62,15 @@
     "instance_type" : "t2.micro",
     "keyname" : "tf-ec2-apache-superset",
 
+    "db_subnet_group_name" : "pkmtri-tf-mysql-gr-apache-superset",
+    "allocated_storage" : 20,
+    "database_name" : "TFRDSApacheSuperset",
+    "engine"  : "mysql", 
+    "engine_version" : "8.0.32",
+    "instance_class" : "db.t3.micro",
+    "rds_name" : "pkmtri-tf-rds-apache-superset",
+    "availability_zone" : "ap-southeast-1a",
+    
     "tags":{
         "Owner": "PKMT",
         "Project": "terraform-apache-superset"

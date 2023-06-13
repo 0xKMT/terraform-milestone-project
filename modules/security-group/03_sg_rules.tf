@@ -1,5 +1,5 @@
 resource "aws_security_group_rule" "ingress_rules" {
-  count       = length(var.ingress_ports)  //Dùng biến đếm count để duyệt qua từng phần tử port
+  count       = length(var.ingress_ports)  //Use the count variable to iterate over each port element
   type        = "ingress"
   from_port   = var.ingress_ports[count.index].port
   to_port     = var.ingress_ports[count.index].port
