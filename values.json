@@ -58,8 +58,7 @@
     ],
 
     "ec2_name" : "pkmtri-tf-ec2-apache-superset",
-    "ami" : "ami-0df7a207adb9748c7",
-    "instance_type" : "t2.micro",
+    "ami" : "ami-0f947193a5dc92abf",
     "keyname" : "tf-ec2-apache-superset",
 
     "db_subnet_group_name" : "pkmtri-tf-mysql-gr-apache-superset",

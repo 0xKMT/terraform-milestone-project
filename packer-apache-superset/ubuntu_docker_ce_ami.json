@@ -1,6 +1,6 @@
 {
     "variables": {
-        "ap_southeast_1_ami": "ami-0df7a207adb9748c7",
+        "ap_southeast_1_ami": "ami-0efcfaf48fcb35dd9",
         "ap_southeast_1_name": "apache-superset-builder",
         "name": "pkmtri-practice-docker-ce-base",
         "ssh_username": "ubuntu"
@@ -19,7 +19,6 @@
             "run_tags": {
                 "ami_create": "{{user `ap_southeast_1_name`}}"
             },
-
             "source_ami": "{{user `ap_southeast_1_ami`}}",
             "ssh_interface": "public_ip",
             "ssh_timeout": "5m",

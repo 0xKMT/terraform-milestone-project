@@ -3,7 +3,7 @@ data "aws_availability_zones" "available" {
 }
 resource "aws_instance" "main" {
   ami = var.ami
-  instance_type               = var.instance_type
+  # instance_type               = var.instance_type
   subnet_id                   = var.subnet_public_id //Associate with public subnet
   associate_public_ip_address = true
   vpc_security_group_ids = [var.vpc_security_group_ids]   //Associate with security group
