@@ -15,6 +15,12 @@ variable "allocated_storage" {
     default = 10
 }
 
+variable "storage_type" {
+    description = "storage type"
+    type = string
+    default = ""
+}
+
 variable "database_name" {
     description = "rds database name"
     type = string

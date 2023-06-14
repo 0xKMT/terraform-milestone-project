@@ -11,6 +11,7 @@ resource "aws_db_subnet_group" "rds_subnet_group" {
 resource "aws_db_instance" "default" {
   identifier           = var.rds_name
   allocated_storage    = var.allocated_storage
+  storage_type         = var.storage_type
   db_name              = var.database_name
   engine               = var.engine
   engine_version       = var.engine_version

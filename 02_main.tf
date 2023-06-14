@@ -54,12 +54,13 @@ module "create_EC2_apache_superset" {
 
 module "RDS_apache_superset" {
   source = "./modules/rds"
+  engine = var.engine
+  engine_version = var.engine_version
   db_subnet_group_name = var.db_subnet_group_name
   private_subnet_ids   = module.vpc_apache_superset.private_subnet_id
   allocated_storage    = var.allocated_storage
+  storage_type         = var.storage_type 
   database_name        = var.database_name
-  engine = var.engine
-  engine_version = var.engine_version
   instance_class = var.instance_class
   rds_username   = var.rds_username
   rds_password   = var.rds_password
