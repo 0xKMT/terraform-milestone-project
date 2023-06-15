@@ -3,10 +3,12 @@ Learn &amp; practice terraform aws throught out terraform milestone project
 
 ## Intro
 Using terraform create the infrastructure on AWS
+
 Using Packer create a new AMI EC2 have Apache Superset container
 
 ## Install
 Terraform 0.1.25
+
 Packer
 
 ## Demo
