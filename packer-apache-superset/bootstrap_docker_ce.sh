@@ -5,7 +5,7 @@ if ! command -v docker &> /dev/null; then
     echo "Installing Docker..."
     curl -fsSL https://get.docker.com -o get-docker.sh
     sudo sh get-docker.sh
-    sudo usermod -aG docker $USER
+    sudo usermod -aG docker ubuntu
     sudo systemctl enable docker
     sudo systemctl start docker
     echo "Docker installation completed."

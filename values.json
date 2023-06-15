@@ -58,8 +58,9 @@
     ],
 
     "ec2_name" : "pkmtri-tf-ec2-apache-superset",
-    "ami" : "ami-0f947193a5dc92abf",
+    "ami" : "ami-05568d46c386ac1c2",
     "keyname" : "tf-ec2-apache-superset",
+    "instance_type": "t2.micro",
 
     "db_subnet_group_name" : "pkmtri-tf-mysql-gr-apache-superset",
     "allocated_storage" : 20,

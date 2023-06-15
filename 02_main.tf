@@ -46,7 +46,7 @@ module "create_EC2_apache_superset" {
   ec2_name = var.ec2_name
   keyname  = var.keyname
   ami      = var.ami 
-  # instance_type = var.instance_type
+  instance_type = var.instance_type
   subnet_public_id  = module.vpc_apache_superset.public_subnet_id
   vpc_security_group_ids = module.security_group_ec2.security_group_id
   tags    = var.tags

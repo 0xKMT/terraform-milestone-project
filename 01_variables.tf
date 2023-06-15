@@ -176,11 +176,11 @@ variable "ec2_name"{
   default     = ""
 }
 
-# variable "instance_type"{
-#   description = "vcpu type"
-#   type        = string
-#   default     = ""
-# }
+variable "instance_type"{
+  description = "vcpu type"
+  type        = string
+  default     = ""
+}
 
 variable "keyname" {
   description = "ID of the Security Group VPC"
